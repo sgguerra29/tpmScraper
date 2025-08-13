@@ -17,6 +17,10 @@ Visualization Suite: The pipeline generates multiple heatmaps and comparitive pl
     GO Term Plots: For WormSeq expression data, occurence of GO term were quantified and plotted per region. Regions were also compared against one another in stacked bar plots. Please note there is currently a bug in the visualization of unique go terms per region. 
     Expression Scatterplot Across Datasets: compares genes highly expressed in both the Wormseq spermatheca (bag and valve combined) and valve and the Cengen spermatheca and valve. 
     Heatmap of Common Genes: Shows genes that were over the scaled TPM threshold in both the CenGen and WormSeq datasets as well as their scaled TPM in each of the datasets for comparison. 
+    WormMine Cross Reference Expression Heatmap: Shows expression (scaled_TPM) of actin/myosin/caclium related genes in spermatheca regions. 
+    WormMine Expression by Coverage: Plots Gene Coverage by dataset and functional category across spermatheca regions. 
+    WormMine Expression by Region: Heatmap of the average expression of functional categories (actin, myosin, and calcium) by spermatheca region. 
+    WormMine Expression by Category Plot: Plots expression levels by fucntional category (calcium, actin, myosin).
 
 Python Dependencies:
 pip install pandas numpy matplotlib seaborn pathlib gpofiler-official matplotlib-venn
@@ -28,6 +32,7 @@ project_folder/
 |_source_cell_types/ (WormSeq datasets for all other cell types)
 |_scripts/
 |_ output_folders/
+|_wormMine_calcium_actin_myosin.csv/ gene list from WormMine query for genes whose GO names contain 'actin', 'myosin' and/or 'calcium. 
 
 Complete Workflow: Run the scripts in the following order for full analysis
 python relative_TPM_calc.py ... calculate relative TPM values
@@ -39,6 +44,7 @@ python data_processing.py ... process and filter expression data
 python merge_wormseq_spermatheca.py ... merge wormseq regions
 python heatmap_generator.py ... generate expression heatmaps
 python comparing_wormseq_cengen.py ... compare datasets and create final visualizations
+python wormmine_cross_ref.py ... cross reference datasets with WormMine query for genes associated with actin, myosin, and/or calcium. 
 
 Output Files:
 w_relative_TPM ... relative TPM calculations with spermatheca-specific flags
@@ -49,6 +55,7 @@ go_term_plots ... GO analysis visualization plots
 scaled_TPM_heatmap ... expression matrices and heatmap images
 TPM_heatmap ... relative TPM heatmaps
 combined_datasets ... cross-dataset comparison results
+wormmine_analysis ... cross-refernce comparison with WormMine gene list 
 
 Adjustable Parameters:
 SCALED_TPM_THRESHOLD ... minimum expression threshold
